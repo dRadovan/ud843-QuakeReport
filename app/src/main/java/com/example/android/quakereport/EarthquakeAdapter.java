@@ -35,18 +35,38 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         // Get the {@link Word} object located at this position in the list
         Earthquake currentEQ = getItem(position);
 
-        TextView mag = (TextView) listItemView.findViewById(R.id.mag_text_view);
+        TextView mag = (TextView) listItemView.findViewById(R.id.magnitude);
         mag.setText(currentEQ.getMagnitude());
 
-        TextView loc = (TextView) listItemView.findViewById(R.id.place_text_view);
+        TextView loc = (TextView) listItemView.findViewById(R.id.location);
         loc.setText(currentEQ.getLocation());
 
-        TextView date = (TextView) listItemView.findViewById(R.id.date_text_view);
         Date currentDate = new Date(currentEQ.getTime());
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
-        String dateToDisplay = dateFormatter.format(currentDate);
+        String dateToDisplay = formatDate(currentDate);
+        String timeToDisplay = formatTime(currentDate);
+
+        TextView date = (TextView) listItemView.findViewById(R.id.date);
         date.setText(dateToDisplay);
 
+        TextView time = (TextView) listItemView.findViewById(R.id.time);
+        time.setText(timeToDisplay);
+
         return listItemView;
+    }
+
+    /**
+     * Return the formatted date string (i.e. "Mar 3, 1984") from a Date object.
+     */
+    private String formatDate(Date dateObject) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
+        return dateFormat.format(dateObject);
+    }
+
+    /**
+     * Return the formatted date string (i.e. "4:30 PM") from a Date object.
+     */
+    private String formatTime(Date dateObject) {
+        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
+        return timeFormat.format(dateObject);
     }
 }

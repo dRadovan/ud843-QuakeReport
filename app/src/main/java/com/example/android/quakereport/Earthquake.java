@@ -7,18 +7,18 @@ package com.example.android.quakereport;
 public class Earthquake {
 
     // fields that describe an earthquake
-    private String mMagnitude;
+    private double mMagnitude;
     private String mLocation;
     private long mTime;
 
-    public Earthquake(String mag, String loc, long time){
+    public Earthquake(double mag, String loc, long time){
         mMagnitude=mag;
         mLocation=loc;
         mTime = time;
     }
 
     //getter methods for each field
-    public String getMagnitude(){
+    public double getMagnitude(){
         return mMagnitude;
     }
     public String getLocation(){

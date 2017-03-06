@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Custom ArrayAdapter to provide Earthquake objects for our list_view
@@ -40,7 +42,10 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         loc.setText(currentEQ.getLocation());
 
         TextView date = (TextView) listItemView.findViewById(R.id.date_text_view);
-        date.setText(currentEQ.getDate());
+        Date currentDate = new Date(currentEQ.getTime());
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
+        String dateToDisplay = dateFormatter.format(currentDate);
+        date.setText(dateToDisplay);
 
         return listItemView;
     }

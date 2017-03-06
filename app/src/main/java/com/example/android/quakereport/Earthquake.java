@@ -9,12 +9,12 @@ public class Earthquake {
     // fields that describe an earthquake
     private String mMagnitude;
     private String mLocation;
-    private String mDate;
+    private long mTime;
 
-    public Earthquake(String mag, String loc, String date){
+    public Earthquake(String mag, String loc, long time){
         mMagnitude=mag;
         mLocation=loc;
-        mDate=date;
+        mTime = time;
     }
 
     //getter methods for each field
@@ -24,8 +24,8 @@ public class Earthquake {
     public String getLocation(){
         return mLocation;
     }
-    public String getDate(){
-        return mDate;
+    public long getTime(){
+        return mTime;
     }
 
     //assuming we won't set any values, we don't provide setter methods

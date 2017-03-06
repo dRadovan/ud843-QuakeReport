@@ -10,11 +10,13 @@ public class Earthquake {
     private double mMagnitude;
     private String mLocation;
     private long mTime;
+    private String mURL;
 
-    public Earthquake(double mag, String loc, long time){
+    public Earthquake(double mag, String loc, long time, String url){
         mMagnitude=mag;
         mLocation=loc;
         mTime = time;
+        mURL = url;
     }
 
     //getter methods for each field
@@ -27,6 +29,7 @@ public class Earthquake {
     public long getTime(){
         return mTime;
     }
+    public String getURL(){return mURL;}
 
     //assuming we won't set any values, we don't provide setter methods
 }

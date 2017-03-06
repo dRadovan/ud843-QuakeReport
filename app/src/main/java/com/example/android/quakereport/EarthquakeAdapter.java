@@ -1,13 +1,16 @@
 package com.example.android.quakereport;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -15,6 +18,8 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import static android.R.attr.start;
 
 /**
  * Custom ArrayAdapter to provide Earthquake objects for our list_view
@@ -56,7 +61,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         String fullLocation = currentEQ.getLocation();
         String locationOff = "Near the";
         String primaryLoc = fullLocation;
-        if (fullLocation.contains("of")){
+        if (fullLocation.contains("of")) {
             int index = fullLocation.indexOf("of");
             locationOff = fullLocation.substring(0, index + 2);
             primaryLoc = fullLocation.substring(index + 3, fullLocation.length());
@@ -73,6 +78,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
         TextView time = (TextView) listItemView.findViewById(R.id.time);
         time.setText(timeToDisplay);
+
 
         return listItemView;
     }
@@ -102,19 +108,29 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         return magnitudeFormat.format(magnitude);
     }
 
-    private int getMagnitudeColor(double magnitude){
+    private int getMagnitudeColor(double magnitude) {
 
-        switch ((int)magnitude) {
-            case 2: return ContextCompat.getColor(getContext(), R.color.magnitude2);
-            case 3: return ContextCompat.getColor(getContext(), R.color.magnitude3);
-            case 4: return ContextCompat.getColor(getContext(), R.color.magnitude4);
-            case 5: return ContextCompat.getColor(getContext(), R.color.magnitude5);
-            case 6: return ContextCompat.getColor(getContext(), R.color.magnitude6);
-            case 7: return ContextCompat.getColor(getContext(), R.color.magnitude7);
-            case 8: return ContextCompat.getColor(getContext(), R.color.magnitude8);
-            case 9: return ContextCompat.getColor(getContext(), R.color.magnitude9);
-            case 10: return ContextCompat.getColor(getContext(), R.color.magnitude10plus);
-            default: return ContextCompat.getColor(getContext(), R.color.magnitude1);
+        switch ((int) magnitude) {
+            case 2:
+                return ContextCompat.getColor(getContext(), R.color.magnitude2);
+            case 3:
+                return ContextCompat.getColor(getContext(), R.color.magnitude3);
+            case 4:
+                return ContextCompat.getColor(getContext(), R.color.magnitude4);
+            case 5:
+                return ContextCompat.getColor(getContext(), R.color.magnitude5);
+            case 6:
+                return ContextCompat.getColor(getContext(), R.color.magnitude6);
+            case 7:
+                return ContextCompat.getColor(getContext(), R.color.magnitude7);
+            case 8:
+                return ContextCompat.getColor(getContext(), R.color.magnitude8);
+            case 9:
+                return ContextCompat.getColor(getContext(), R.color.magnitude9);
+            case 10:
+                return ContextCompat.getColor(getContext(), R.color.magnitude10plus);
+            default:
+                return ContextCompat.getColor(getContext(), R.color.magnitude1);
 
         }
     }

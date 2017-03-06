@@ -10,15 +10,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import static android.R.attr.resource;
-
 /**
  * Custom ArrayAdapter to provide Earthquake objects for our list_view
  */
 
-public class EarthquakeArrayAdapter extends ArrayAdapter<Earthquake> {
+public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
-    public EarthquakeArrayAdapter(Context context, ArrayList<Earthquake> earthquakes) {
+    public EarthquakeAdapter(Context context, ArrayList<Earthquake> earthquakes) {
         super(context, 0, earthquakes);
     }
 
@@ -29,7 +27,7 @@ public class EarthquakeArrayAdapter extends ArrayAdapter<Earthquake> {
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.eq_item, parent, false);
+                    R.layout.earthquake_list_item, parent, false);
         }
 
         // Get the {@link Word} object located at this position in the list

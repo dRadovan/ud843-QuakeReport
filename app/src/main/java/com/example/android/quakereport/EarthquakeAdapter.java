@@ -2,6 +2,7 @@ package com.example.android.quakereport;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +39,18 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         TextView mag = (TextView) listItemView.findViewById(R.id.magnitude);
         mag.setText(currentEQ.getMagnitude());
 
-        TextView loc = (TextView) listItemView.findViewById(R.id.location);
-        loc.setText(currentEQ.getLocation());
+        TextView locationOffset = (TextView) listItemView.findViewById(R.id.location_offset);
+        TextView primaryLocation = (TextView) listItemView.findViewById(R.id.primary_location);
+        String fullLocation = currentEQ.getLocation();
+        String locationOff = "Near the";
+        String primaryLoc = fullLocation;
+        if (fullLocation.contains("of")){
+            int index = fullLocation.indexOf("of");
+            locationOff = fullLocation.substring(0, index + 2);
+            primaryLoc = fullLocation.substring(index + 3, fullLocation.length());
+        }
+        locationOffset.setText(locationOff);
+        primaryLocation.setText(primaryLoc);
 
         Date currentDate = new Date(currentEQ.getTime());
         String dateToDisplay = formatDate(currentDate);

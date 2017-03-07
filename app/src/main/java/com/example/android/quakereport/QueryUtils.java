@@ -51,10 +51,12 @@ public final class QueryUtils {
             for (int i = 0; i < features.length(); i++) {
                 JSONObject earthquake = features.getJSONObject(i);
                 JSONObject properties = earthquake.getJSONObject("properties");
+                // Extract specific data that we'll use in Earthquake constructor
                 double magnitude = properties.getDouble("mag");
                 String location = properties.getString("place");
                 long time = properties.getLong("time");
                 String url = properties.getString("url");
+                // Create an Earthquake object and add it to the ArrayList
                 Earthquake currentEarthquake = new Earthquake(magnitude, location, time, url);
                 earthquakes.add(currentEarthquake);
             }

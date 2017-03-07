@@ -27,13 +27,16 @@ import static android.R.attr.start;
 
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
+    // Constructor that calls the constructor of a super-class (@link ArrayAdapter)
     public EarthquakeAdapter(Context context, ArrayList<Earthquake> earthquakes) {
         super(context, 0, earthquakes);
     }
 
+    // OVeride getView method that returns a View we want to display
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         // Check if an existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
         if (listItemView == null) {
@@ -41,11 +44,14 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
                     R.layout.earthquake_list_item, parent, false);
         }
 
-        // Get the {@link Word} object located at this position in the list
+        // Get the {@link Earthquake} object located at this position in the list
         Earthquake currentEQ = getItem(position);
 
+        // Find the TextView that displays magnitude
+        // and set the magnitude value of a current earthquake on it
         TextView magnitudeView = (TextView) listItemView.findViewById(R.id.magnitude);
         magnitudeView.setText(formatMagnitude(currentEQ.getMagnitude()));
+
         // Set the proper background color on the magnitude circle.
         // Fetch the background from the TextView, which is a GradientDrawable.
         GradientDrawable magnitudeCircle = (GradientDrawable) magnitudeView.getBackground();
@@ -56,6 +62,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         // Set the color on the magnitude circle
         magnitudeCircle.setColor(magnitudeColor);
 
+        // Set the location offset and primary location text on appropriate views
         TextView locationOffset = (TextView) listItemView.findViewById(R.id.location_offset);
         TextView primaryLocation = (TextView) listItemView.findViewById(R.id.primary_location);
         String fullLocation = currentEQ.getLocation();
@@ -69,6 +76,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         locationOffset.setText(locationOff);
         primaryLocation.setText(primaryLoc);
 
+        // Set the date and time on appropriate views
         Date currentDate = new Date(currentEQ.getTime());
         String dateToDisplay = formatDate(currentDate);
         String timeToDisplay = formatTime(currentDate);
@@ -79,7 +87,7 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         TextView time = (TextView) listItemView.findViewById(R.id.time);
         time.setText(timeToDisplay);
 
-
+        // Return the correctly filled view
         return listItemView;
     }
 

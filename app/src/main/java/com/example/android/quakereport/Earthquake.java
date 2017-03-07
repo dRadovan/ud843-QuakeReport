@@ -12,6 +12,13 @@ public class Earthquake {
     private long mTime;
     private String mURL;
 
+    /**
+     * Earthquake constructor
+     * @param mag magnitude of the earthquake
+     * @param loc descriptive location of the earthquake
+     * @param time time of the earthquake in miliseconds
+     * @param url link to USGS site
+     */
     public Earthquake(double mag, String loc, long time, String url){
         mMagnitude=mag;
         mLocation=loc;

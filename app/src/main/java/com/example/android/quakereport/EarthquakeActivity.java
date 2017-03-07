@@ -25,6 +25,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+/**
+ * Activity that loads when the app starts
+ */
 public class EarthquakeActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
@@ -40,12 +43,15 @@ public class EarthquakeActivity extends AppCompatActivity {
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
 
+        // Initialize the Earthquake adapter with the list of earthquakes
         final EarthquakeAdapter adapter = new EarthquakeAdapter(this, earthquakes);
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
         earthquakeListView.setAdapter(adapter);
 
+        // Set the OnItemClickListener on the (@link ListView)
+        // so when the item is clicked it opens the URL of the earthquake in browser
         earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

@@ -18,6 +18,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static android.R.attr.start;
 
@@ -28,7 +29,7 @@ import static android.R.attr.start;
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
     // Constructor that calls the constructor of a super-class (@link ArrayAdapter)
-    public EarthquakeAdapter(Context context, ArrayList<Earthquake> earthquakes) {
+    public EarthquakeAdapter(Context context, List<Earthquake> earthquakes) {
         super(context, 0, earthquakes);
     }
 

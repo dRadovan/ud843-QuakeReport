@@ -29,10 +29,17 @@
         android:id="@+id/empty_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        tools:text="sample text"/>
+        android:layout_centerVertical="true"
+        android:textAppearance="?android:textAppearanceMedium"
+        tools:text="sample text" />
+
+    <ProgressBar
+        android:id="@+id/loading_progress_bar"
+        style="@style/Base.Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
 
 </RelativeLayout>

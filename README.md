@@ -1,6 +1,9 @@
 Quake Report App
 ===================================
 
+
+QuakeReport is the companion Android app for the Udacity course [Android Basics: Networking](https://eu.udacity.com/course/android-basics-networking--ud843).
+
 This app displays a list of recent earthquakes in the world
 from the U.S. Geological Survey (USGS) organization.
 
